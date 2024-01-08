@@ -1,21 +1,24 @@
 import Auto
-def harmadikFeladat():
-    f = open("auto.txt","r",encoding="utf-8")
-    f.readline()
-    sorok = f.readlines()
-    f.close()
+f = open("auto.txt","r",encoding="utf-8")
+f.readline()
+sorok = f.readlines()
+f.close()
+def flotta():
     index = 0
-    autoDatumMinimum = 0
-    autoDatumMinimumNev = ""
-    autoSzama = 0
     while index < len(sorok):
-        autoSzama += 1
-        Autok = Auto.Auto(sorok[index])
-        if Autok.gyarDatum > autoDatumMinimum:
-            autoDatumMinimum = Autok.gyarDatum
-            autoDatumMinimumNev = Autok.nev
         index+=1
+    return f"III/Flotta\n\tAutok szama: {index}."
 
-    print("III/Flotta:")
-    print(f"\n\tAutok szama: {autoSzama}.")
-    print(f"III/Legfiatalabb: {autoDatumMinimumNev}({autoDatumMinimum})")
+def legfiatalabbAuto():
+    AutoLegFiatalabb = 2000
+    AutoLegFiatalabbNeve = ""
+    index = 0
+    while index < len(sorok):
+        Autok = Auto.Auto(sorok[index])
+        if Autok.gyarDatum > AutoLegFiatalabb:
+            AutoLegFiatalabb = Autok.gyarDatum
+            AutoLegFiatalabbNeve = Autok.nev
+        index+=1
+    print(f"III/Legfiatalabb\n\tA legfiatalabb auto: {AutoLegFiatalabbNeve}({AutoLegFiatalabb}).")
+
+
